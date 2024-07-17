@@ -7,6 +7,7 @@ app = Flask(
   static_folder='static'
 )
 
+# Rutas 
 @app.get('/')
 def index():
   return render_template('index.html')
@@ -14,6 +15,10 @@ def index():
 @app.get('/hello')
 def hello():
   return render_template('hello.html', name=request.args.get('name'))
+
+@app.get('/about/<id>')
+def about(id):
+   return render_template('about.html',location=f"{id}")
 
 @app.errorhandler(404)
 def handle_404(e):
